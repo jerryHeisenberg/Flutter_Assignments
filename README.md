@@ -1,6 +1,8 @@
 # Flutter_Assignments
+# hammadnadeem10@aol.com
 # Assignment #01 
 #Questions
+
 
 Write a program that calculates the area of a triangle using the formula A = (b * h) / 2. The program should prompt the user to enter the base and height of the triangle and then display the calculated area.
 
