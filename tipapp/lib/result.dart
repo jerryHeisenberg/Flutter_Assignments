@@ -17,12 +17,17 @@ class TotalBill extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Text(
+     Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children:[
+            const Text(
           "\$",
           style: TextStyle(
-              fontFeatures: <FontFeature>[FontFeature.superscripts()]),
+              fontSize: 20),
         ),
-        Text(bill.getTotalBill(),style: const TextStyle(fontSize: 36),),
+        Text(bill.getTotalAmountPerPerson(), style: const TextStyle(fontSize: 36),textAlign:TextAlign.left,),
+          ]
+        ),
         const Text("\n\n\nTOTAL"),
         const VerticalDivider(
           width: 30,
@@ -31,14 +36,8 @@ class TotalBill extends StatelessWidget {
         ),
         Column(mainAxisSize: MainAxisSize.min, children: [
           const Text("SUBTOTAL"),
-          const Text(
-            "\$",
-            style: TextStyle(
-                fontFeatures: <FontFeature>[FontFeature.superscripts()]),
-          ),
-          Text(bill.getTotalAmount()),
+          Text("\$"+bill.getTotalAmount()),
           const Text("TIP"),
-          
           Text("\$"+bill.getTotalTip()),
         ])
       ],
