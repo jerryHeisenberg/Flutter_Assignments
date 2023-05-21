@@ -20,9 +20,6 @@ class TotalTip extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
             const Text(" Per Person",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20, color: Color.fromARGB(255, 206, 42, 96)),),
         
         const Text(
@@ -35,8 +32,8 @@ class TotalTip extends StatelessWidget {
         const Text("TOTAL"),
        
 
-          ],
-        ),
+          
+        
                 
         Column(mainAxisSize: MainAxisSize.min, children: [
           const Text("SUBTOTAL"),
