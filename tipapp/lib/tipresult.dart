@@ -20,21 +20,22 @@ class TotalTip extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-            const Text(" Per Person",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20, color: Color.fromARGB(255, 206, 42, 96)),),
+            const Text(" Per Person",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16, color: Color.fromARGB(255, 206, 42, 96)),),
         
-        const Text(
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children:[
+            const Text(
           "\$",
           style: TextStyle(
               fontSize: 20),
         ),
         
         Text(bill.getTotalAmountPerPerson(), style: const TextStyle(fontSize: 36),textAlign:TextAlign.left,),
-        const Text("TOTAL"),
-       
 
-          
-        
-                
+          ]
+        ),
+        const Text("\nTOTAL"),
         Column(mainAxisSize: MainAxisSize.min, children: [
           const Text("SUBTOTAL"),
           Text("\$"+bill.getAmountPerPerson()),
