@@ -13,7 +13,7 @@ class TipCalculator extends StatefulWidget {
 }
 
 class _TipCalculatorState extends State<TipCalculator> {
-  ThemeMode _themeMode = ThemeMode.light;
+  
   Bill bill = Bill(totalAmount: 0, tipAmount: 0, noOfPeople: 1);
   int dollars = 50;
   int cents = 49;
@@ -21,12 +21,7 @@ class _TipCalculatorState extends State<TipCalculator> {
   int value = 0;
   late String customTip;
 
-  void toggleTheme() {
-    setState(() {
-      _themeMode =
-          _themeMode == ThemeMode.light ? ThemeMode.dark : ThemeMode.light;
-    });
-  }
+  
 
   calculatedTip(double percentage) {
     bill.tipAmount = bill.totalAmount * percentage / 100;
@@ -53,15 +48,9 @@ class _TipCalculatorState extends State<TipCalculator> {
   }
 
   ButtonStyle customStyle = ButtonStyle(
-    backgroundColor: MaterialStateProperty.resolveWith<Color>(
-      (Set<MaterialState> states) {
-        if (states.contains(MaterialState.pressed)) {
-          return const Color.fromARGB(
-              255, 206, 42, 96); // Color when the button is selected
-        }
-        return const Color.fromARGB(255, 255, 255, 255); // Default button color
-      },
-    ),
+    overlayColor:MaterialStateProperty.all(const Color.fromARGB(
+              255, 206, 42, 96)) ,
+    backgroundColor:const MaterialStatePropertyAll( Color.fromARGB(255, 255, 255, 255)),
     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
     RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(20.0), // Set the desired border radius value
@@ -116,6 +105,8 @@ class _TipCalculatorState extends State<TipCalculator> {
                   opneCustomTip(context);
                 },
                 style: customStyle,
+                
+                
                 child: const Text("Custom Tip"),
               )
             ],
@@ -132,7 +123,8 @@ class _TipCalculatorState extends State<TipCalculator> {
               textAlign: TextAlign.left,
             ),
           ),
-          Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+          Row(mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center, children: [
             IconButton(
               onPressed: () =>
                   {dollars++, bill.totalAmount = dollars.toDouble()},
@@ -147,21 +139,27 @@ class _TipCalculatorState extends State<TipCalculator> {
           ]),
 
           Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+             const Padding(padding: EdgeInsets.only(left: 20)),
               const Text(
                 "\$",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 32),
+              textDirection:TextDirection.rtl ,
               ),
+               const Padding(padding: EdgeInsets.only(left: 72)),
               WheelSlider.number(
                   allowPointerTappable: false,
                   verticalListHeight: 110,
                   totalCount: 1000,
                   initValue: 10,
+                  perspective: 0.0001,
                   horizontal: false,
+                  selectedNumberStyle: const TextStyle(fontWeight: FontWeight.bold,
+                      fontSize: 20,),
                   unSelectedNumberStyle:
-                      const TextStyle(fontSize: 16, color: Colors.black),
+                      const TextStyle(fontSize: 20, color: Colors.black),
                   onValueChanged: (value) {
                     setState(() {
                       dollars = value;
@@ -169,15 +167,18 @@ class _TipCalculatorState extends State<TipCalculator> {
                     });
                   },
                   currentIndex: 10),
+                   const Padding(padding: EdgeInsets.only(left: 4)),
               WheelSlider.number(
                   allowPointerTappable: false,
                   verticalListHeight: 110,
-                  totalCount: 1000,
+                  totalCount: 100,
                   initValue: 10,
                   horizontal: false,
+                  selectedNumberStyle: const TextStyle(fontWeight: FontWeight.bold,
+                      fontSize: 20,),
                   unSelectedNumberStyle: const TextStyle(
                     fontWeight: FontWeight.bold,
-                      fontSize: 16, color: Color.fromARGB(255, 206, 42, 96)),
+                      fontSize: 20, color: Color.fromARGB(255, 206, 42, 96)),
                   onValueChanged: (value) {
                     setState(() {
                       cents = value;

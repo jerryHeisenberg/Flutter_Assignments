@@ -21,7 +21,7 @@ class _CustomTipState extends State<CustomTip> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
         child: Container(
-      height: MediaQuery.of(context).size.height * 0.3,
+      height: MediaQuery.of(context).size.height * 0.5,
       padding: const EdgeInsets.all(24),
       child: Column(children: [
         const Padding(
