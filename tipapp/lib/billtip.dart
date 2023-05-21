@@ -42,8 +42,8 @@ class _TipCalculatorState extends State<TipCalculator> {
       isScrollControlled: true,
       builder: (BuildContext builder) {
         return  Padding(
-          padding:
-              EdgeInsets.only(bottom: 12),
+          padding:EdgeInsets.only(
+              bottom:MediaQuery.of(context).viewInsets.bottom),
           child: CustomTip(bill: bill),
         );
       },
